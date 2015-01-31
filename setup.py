@@ -9,11 +9,18 @@ import botocore_tornado
 from setuptools import setup, find_packages
 
 
+def read(filename):
+    try:
+        return open(filename).read()
+    except (OSError, IOError):
+        return ""
+
+
 setup(
     name='botocore-tornado',
     version=botocore_tornado.__version__,
     description='botocore subclasses that uses AsyncHTTPClient',
-    long_description=open('README.rst').read(),
+    long_description=read('README.rst'),
     author='Simon Hewitt',
     author_email='simon@qudos.com.com',
     url='https://github.com/qudos-com/botocore-tornado',
@@ -23,7 +30,7 @@ setup(
     include_package_data=True,
     install_requires=['botocore>=0.85.0',
                       'tornado>=4.0.0'],
-    license=open("LICENSE.txt").read(),
+    license=read("LICENSE.txt"),
     classifiers=(
         'Intended Audience :: Developers',
         'Intended Audience :: System Administrators',
