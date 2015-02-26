@@ -54,6 +54,12 @@ def main_async():
     print "The url of the object is:"
     print
     print 'http://'+bucket+'.s3.amazonaws.com/' + key + '/' + filename
+    operation = s3.get_operation('DeleteObject')
+    http_response, response_data = yield operation.call(endpoint,
+                                                        bucket=bucket,
+                                                        key=key + '/' + filename)
+    print http_response
+    print response_data
 
 
 def main_sync():
@@ -98,6 +104,12 @@ def main_sync():
     print "The url of the object is:"
     print
     print 'http://'+bucket+'.s3.amazonaws.com/' + key + '/' + filename
+    operation = s3.get_operation('DeleteObject')
+    http_response, response_data = operation.call(endpoint,
+                                                  bucket=bucket,
+                                                  key=key + '/' + filename)
+    print http_response
+    print response_data
 
 
 if __name__ == '__main__':
