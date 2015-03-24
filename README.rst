@@ -43,7 +43,7 @@ Using botocore-tornado:
 
     from tornado.ioloop import IOLoop
     from tornado import gen
-    import tornado_botocore.session
+    import botocore_tornado.session
 
     @gen.coroutine
     def main_async():
